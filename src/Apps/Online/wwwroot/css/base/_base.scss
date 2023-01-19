@@ -1,0 +1,22 @@
+﻿@import "font";
+@import "color";
+
+* {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Darker Grotesque', sans-serif;
+    font-size: 17.2px;
+    font-size: 1.25rem;
+    font-weight: 400;
+    -webkit-font-smoothing: auto;
+    line-height: 35px;
+    line-height: 3.5rem;
+    text-align: left;
+    color: var(--main-font-color);
+    background-color: var(--bg-color);
+}

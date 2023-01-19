@@ -1,0 +1,33 @@
+﻿.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--bg-color);
+    z-index: 1;
+    border-bottom: 1px solid var(--lightning-color);
+
+    .navbar {
+        display: flex;
+        width: 100%;
+        padding: 5px 5px 5px 15px;
+
+        .navbar-brand, .navbar-search, .navbar-cart {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            display: flex;
+            justify-content: start;
+            flex-grow: 1;
+            width: 100%;
+        }
+
+        .navbar-search, .navbar-cart {
+            justify-content: center;
+            flex-shrink: 0;
+            padding: 10px;
+        }
+    }
+}

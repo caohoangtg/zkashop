@@ -1,0 +1,108 @@
+pipeline{
+    agent any
+    
+    stages{
+        
+        stage('Execute commands before')
+        {
+          steps{
+              sshPublisher(
+                publishers: [
+                  sshPublisherDesc(
+                    configName: '125.212.224.65', 
+                    transfers: [
+                      sshTransfer(
+                      cleanRemote: false, 
+                      excludes: '', 
+                      execCommand: '''cd /app
+                        rm -rf dotnet
+                        docker compose down
+                        docker rmi -f app:latest''', 
+                      execTimeout: 120000, 
+                      flatten: false, 
+                      makeEmptyDirs: false, 
+                      noDefaultExcludes: false, 
+                      patternSeparator: '[, ]+', 
+                      remoteDirectory: '', 
+                      remoteDirectorySDF: false, 
+                      removePrefix: '', 
+                      sourceFiles: ''
+                    )
+                  ], 
+                  usePromotionTimestamp: false, 
+                  useWorkspaceInPromotion: false, 
+                  verbose: false
+                  )
+                ]
+              )
+          }
+        }
+       
+        stage('Build')
+        {
+          steps{
+              sshPublisher(
+                publishers: [
+                  sshPublisherDesc(
+                    configName: '125.212.224.65', 
+                    transfers: [
+                      sshTransfer(
+                      cleanRemote: false, 
+                      excludes: '', 
+                      execCommand: '', 
+                      execTimeout: 120000, 
+                      flatten: false, 
+                      makeEmptyDirs: false, 
+                      noDefaultExcludes: false, 
+                      patternSeparator: '[, ]+', 
+                      remoteDirectory: '/dotnet', 
+                      remoteDirectorySDF: false, 
+                      removePrefix: '', 
+                      sourceFiles: '**'
+                    )
+                  ], 
+                  usePromotionTimestamp: false, 
+                  useWorkspaceInPromotion: false, 
+                  verbose: false
+                  )
+                ]
+              )
+          }
+        }
+
+        stage('Execute commands after')
+        {
+          steps{
+              sshPublisher(
+                publishers: [
+                  sshPublisherDesc(
+                    configName: '125.212.224.65', 
+                    transfers: [
+                      sshTransfer(
+                      cleanRemote: false, 
+                      excludes: '', 
+                      execCommand: '''cd /app
+                        docker compose build
+                        docker compose up -d
+                        rm -rf dotnet''', 
+                      execTimeout: 120000, 
+                      flatten: false, 
+                      makeEmptyDirs: false, 
+                      noDefaultExcludes: false, 
+                      patternSeparator: '[, ]+', 
+                      remoteDirectory: '', 
+                      remoteDirectorySDF: false, 
+                      removePrefix: '', 
+                      sourceFiles: ''
+                    )
+                  ], 
+                  usePromotionTimestamp: false, 
+                  useWorkspaceInPromotion: false, 
+                  verbose: false
+                  )
+                ]
+              )
+          }
+        }
+    }
+}
