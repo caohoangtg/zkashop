@@ -139,8 +139,8 @@ body {
 }
 .product .product__favorite {
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 12px;
+  right: 12px;
   display: flex;
   background-color: var(--bg-color);
   padding: 5px;
