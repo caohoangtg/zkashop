@@ -32,6 +32,8 @@
         <main class="main" role="main">
             @RenderBody()
         </main>
+
+        @Html.Partial("~/Views/Shared/_Popup.cshtml")
     </div>
 
     <footer class="border-top footer text-muted">
@@ -41,6 +43,8 @@
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/popup.js" asp-append-version="true"></script>
+    <script src="~/js/product-detail.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

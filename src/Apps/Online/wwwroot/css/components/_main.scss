@@ -140,4 +140,23 @@
         font-weight: bold;
         color: var(--price-color);
     }
+
+    /*.product__card.product-open {
+
+        .product__img {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 2;
+            background-color: var(--bg-color);
+            transition: all 5s;
+
+            img {
+                border-radius: 0;
+                width: 100%;
+                height: auto;
+            }
+        }
+    }*/
 }
